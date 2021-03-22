@@ -1,6 +1,6 @@
 function [Out,out_volt] = sftreg_miteADC(samples)
     //samples is actually number of shifts
-    exec('/home/ubuntu/rasp30/prog_assembly/libs/scilab_code/sramload_w_check.sce', -1)
+    exec('$FPAAHOME/rasp30/prog_assembly/libs/scilab_code/sramload_w_check.sce', -1)
  
 [path,fname,extension] = fileparts(file_name); 
 hid_dir = path + '.' + fname;

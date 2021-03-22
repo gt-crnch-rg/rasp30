@@ -2,8 +2,8 @@ clc; // clear the console window
 previousprot = funcprot(1); //integer with possible values 0, 1, 2 returns previous value
 funcprot(0); //allows the user to specify what scilab do when such variables are redefined. 0=nothing, 1=warning, 2=error
 loadXcosLibs(); // Import some useful Xcos macros into Scilab.
-getd('/home/ubuntu/rasp30/xcos_blocks/') ;//Loads all .sci files (containing Scilab functions) defined in the path directory.
-home_dir = '/home/ubuntu/rasp30/xcos_blocks/';
+getd('$FPAAHOME/rasp30/xcos_blocks/') ;//Loads all .sci files (containing Scilab functions) defined in the path directory.
+home_dir = '$FPAAHOME/rasp30/xcos_blocks/';
 
 //Create custom palette for all blocks
 pal1 = xcosPal("Level 1 (System) Blocks");
@@ -27,7 +27,7 @@ style.align="center";
 style.overflow="fill"; 
 style.fontSize=16;
 
-file_list=listfiles("/home/ubuntu/rasp30/sci2blif/rasp_design_added_blocks/*.sce");
+file_list=listfiles("$FPAAHOME/rasp30/sci2blif/rasp_design_added_blocks/*.sce");
 size_file_list=size(file_list);
 if file_list ~= [] then
     for i=1:size_file_list(1)
@@ -52,14 +52,14 @@ xcosPalAdd(pal11,["FPAA" "Macro-block Generation"]);
 funcprot(previousprot); //Turn the warning messages back on to be displayed in consold
 
 // Launching the GUI
-exec('/home/ubuntu/rasp30/sci2blif/guicode_v6.sce',-1);
-exec('/home/ubuntu/rasp30/sci2blif/caps4dgn.sce',-1);
-cd('/home/ubuntu/RASP_Workspace');
-//exec('/home/ubuntu/rasp30/work/examples/variables/allvariables.sce',-1)
-//exec('/home/ubuntu/RASP_Workspace/block_files/create_palette.sce',-1);
-//getd('/home/ubuntu/rasp30/sci2blif/blif4blks/')
-//getd('/home/ubuntu/RASP_Workspace/block_files/compile_files')
+exec('$FPAAHOME/rasp30/sci2blif/guicode_v6.sce',-1);
+exec('$FPAAHOME/rasp30/sci2blif/caps4dgn.sce',-1);
+cd('$FPAAHOME/RASP_Workspace');
+//exec('$FPAAHOME/rasp30/work/examples/variables/allvariables.sce',-1)
+//exec('$FPAAHOME/RASP_Workspace/block_files/create_palette.sce',-1);
+//getd('$FPAAHOME/rasp30/sci2blif/blif4blks/')
+//getd('$FPAAHOME/RASP_Workspace/block_files/compile_files')
 
 //Add modelica files' path to the variable %MODELICA_USER_LIBS
 global %MODELICA_USER_LIBS;
-%MODELICA_USER_LIBS="/home/ubuntu/rasp30/xcos_blocks";
+%MODELICA_USER_LIBS="$FPAAHOME/rasp30/xcos_blocks";

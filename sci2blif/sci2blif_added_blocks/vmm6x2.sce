@@ -2,7 +2,7 @@
 if (blk_name.entries(bl) == "vmm6x2") then
     for ss=1:scs_m.objs(bl).model.ipar(1)
 
-l=mgetl('/home/ubuntu/rasp30/sci2blif/sci2blif_added_blocks/a.txt');
+l=mgetl('$FPAAHOME/rasp30/sci2blif/sci2blif_added_blocks/a.txt');
         sci2blif_str=evstr(l);
 
 
