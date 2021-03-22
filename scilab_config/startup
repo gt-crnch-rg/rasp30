@@ -5,16 +5,17 @@
 #cp -u $FPAAHOME/rasp30/sci2blif/create_palette.sce $FPAAHOME/RASP_Workspace/block_files/
 #cp -u $FPAAHOME/rasp30/sci2blif/cadsp.sci $FPAAHOME/RASP_Workspace/block_files/compile_files/
 
-cd; sudo chown ubuntu:ubuntu RASP_Workspace/ -R
+#cd; sudo chown $USER:$USER RASP_Workspace/ -R
 
 sudo cp -u $FPAAHOME/rasp30/scilab_config/99-usb-serial.rules /etc/udev/rules.d/
 
+#Create a desktop shortcut
 if [ ! -f /usr/share/applications/rasp.desktop ];
 then
    sudo cp $FPAAHOME/rasp30/scilab_config/rasp.desktop /usr/share/applications/rasp.desktop 
 fi
 
 
-$FPAAHOME/scilab-5.4.1/bin/scilab -f $FPAAHOME/rasp30/sci2blif/rasp_design.sce
+$SCILABHOME/scilab-5.5.2/bin/scilab -f $FPAAHOME/rasp30/sci2blif/rasp_design.sce
 
 

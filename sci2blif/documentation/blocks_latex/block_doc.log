@@ -399,8 +399,7 @@ _bias.pdf Graphic file (type pdf)
 
 <use $FPAAHOME/rasp30/sci2blif/documentation/blocks_latex/figures/nmirror_w_
 bias.pdf>)
-($FPAAHOME/rasp30/sci2blif/documentation/blocks_latex/text/ota.tex [20 </hom
-e/ubuntu/rasp30/sci2blif/documentation/blocks_latex/figures/nmirror_w_bias.pdf>
+($FPAAHOME/rasp30/sci2blif/documentation/blocks_latex/text/ota.tex [20 <$FPAAHOME/rasp30/sci2blif/documentation/blocks_latex/figures/nmirror_w_bias.pdf>
 ]
 
 pdfTeX warning: pdflatex (file $FPAAHOME/rasp30/sci2blif/documentation/block

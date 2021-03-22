@@ -537,10 +537,10 @@ function up1_callback()
     global path;
     messagebox(["Once you press OK, RASP Tools will update." "Please wait for the update confirmation message to appear."],"Update to Begin" , "info", "modal");
     if(path ~= "") then
-        unix_s('cd; sudo chown ubuntu:ubuntu rasp30/ -R');
+        unix_s('cd; sudo chown $USER:$USER rasp30/ -R');
         unix_s('cd; svn update rasp30; cd '+path);
     else
-        unix_s('cd; sudo chown ubuntu:ubuntu rasp30/ -R');
+        unix_s('cd; sudo chown $USER:$USER rasp30/ -R');
         unix_s('cd; svn update rasp30');
     end
     messagebox(["RASP Tools is updated." "Scilab will now close for the changes to take effect in RASP Tools." "Please restart RASP Tools."],"Update Complete!" , "info", "modal");
@@ -552,10 +552,10 @@ function up2_callback()
     global path;   
     messagebox(["Once you press OK, RASP Tools will reset itself." "Please wait for the reset confirmation message to appear."],"Reset to Begin" , "info", "modal");
     if(path ~= "") then
-        unix_s('cd; sudo chown ubuntu:ubuntu rasp30/ -R');
+        unix_s('cd; sudo chown $USER:$USER rasp30/ -R');
         unix_s('cd; rm ~/rasp30 -rf; svn co https://github.com/jhasler/rasp30/trunk ~/rasp30/; cd '+path);
     else
-        unix_s('cd; sudo chown ubuntu:ubuntu rasp30/ -R');
+        unix_s('cd; sudo chown $USER:$USER rasp30/ -R');
         unix_s('cd; rm ~/rasp30 -rf; svn co https://github.com/jhasler/rasp30/trunk ~/rasp30/');
     end
     messagebox(["RASP Tools has been reset." "Scilab will now close for the changes to take effect in RASP Tools." "Please restart RASP Tools."],"Reset Complete!" , "info", "modal");
@@ -628,7 +628,7 @@ function etc2_callback(handles)
     disp('Programming...');
     hid_dir=path+'.'+fname;
     unix_s('cp ' + hid_dir+'/input_vector '+ path); 
-    exec("~/rasp30/prog_assembly/libs/scilab_code/MakeProgramlilst_CompileAssembly.sce",-1);
+    exec("$FPAAHOME/rasp30/prog_assembly/libs/scilab_code/MakeProgramlilst_CompileAssembly.sce",-1);
     exec('$FPAAHOME/rasp30/prog_assembly/libs/scilab_code/finetune_program_ver00_gui.sce', -1);
     exec('$FPAAHOME/rasp30/prog_assembly/libs/scilab_code/dc_setup_gui.sce', -1);
     disp('DC setup done');
