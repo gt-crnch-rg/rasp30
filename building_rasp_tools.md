@@ -10,9 +10,23 @@ For a standard remote VM (ie, not local WSL install), this installation assumes 
 #Install x2go for remote GUI access. 
 [root@remotevm]$ apt-get install x2goserver x2goserver-xsession
 ```
+
 Note that X forwarding will work but is likely to be somewhat slow on a remote VM. For some references on why we use VNC/NoMX instead of SSH forwarding, please see these links:
 * A brief 2009 [post](http://www.linuxtechie.net/2009/11/vnc-vs-x11-forwarding.html)
 * Ars Technica 2010 [post](https://arstechnica.com/civis/viewtopic.php?t=1155637)
+
+## Scilab Installation - Challenges and Bugs
+RASP depends on Scilab which is not easily built from source due to dependencies on third-party libraries including HDf5 and the Java 8 JDK. If you want to try and build these third-party libraries from scratch, there is a script to allow you to do this [here](https://github.com/scilab/scilab-prerequirements) and the main Github repository can be found [here](https://github.com/scilab/scilab).
+
+This [AskUbuntu page](https://askubuntu.com/questions/1052962/scilab-5-5-2-on-ubuntu-18-04) seems to have the best advice, which is to pull the 16.04 versions of certain dependencies and then install Scilab 5.5.2 from the same repo. 
+
+1) 
+
+Then note you need to add the correct LD_LIBRARY_PATH to your bashrc
+```
+#Scilab will look for libjava.so and libjvm.so from Java 8
+export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/
+```
 
 # Adding RASP tools and Scilab to an Ubuntu 18.04 VM
 
@@ -25,13 +39,7 @@ Note that X forwarding will work but is likely to be somewhat slow on a remote V
 [root@remotevm]$ apt install libgfortran3
 ```
 
-2) Pull the Scilab 5.5.2 64 bit binary zipfile and untar it to you scilab directory.
-
-```
-export SCILAB_DIR=/opt/scilab/5.5.2
-wget --no-check-certificate https://www.scilab.org/download/5.5.2/scilab-5.5.2.bin.linux-x86_64.tar.gz
-tar xvzf scilab-5.5.2.bin.linux-x86_64.tar.gz -C $SCILAB_DIR
-```
+2) Pull the Scilab 5.5.2 64 bit 
 
 3) Test that Scilab loads correctly
 
