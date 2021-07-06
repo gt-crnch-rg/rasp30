@@ -20,7 +20,9 @@ Note that X forwarding will work but is likely to be somewhat slow on a remote V
 
 ```
 #Install dependencies needed for Scilab and the RASP tools
-[root@remotevm]$ apt install build-essential default-jdk binutils-msp430 msp430mcu
+[root@remotevm]$ apt install build-essential default-jdk binutils-msp430 msp430mcu 
+#To run scilab in standalone mode
+[root@remotevm]$ apt install libgfortran3
 ```
 
 2) Pull the Scilab 5.5.2 64 bit binary zipfile and untar it to you scilab directory.
